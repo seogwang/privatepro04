@@ -1,6 +1,7 @@
 package kr.ed.haebeop.controller;
 
 import kr.ed.haebeop.domain.Test;
+import kr.ed.haebeop.persistence.TestMapper;
 import kr.ed.haebeop.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
