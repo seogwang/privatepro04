@@ -28,7 +28,7 @@
   <style>
     input[type=checkbox] { transform : scale(2); }
 
-    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: left; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
+    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
     .agree_fr { width: 450px; white-space:pre-wrap; margin: 10px auto;
       padding: 24px; height:300px; overflow-y:auto; }
     .form-check { width: 450px; margin: 10px auto; padding-left: 24px; padding-top: 10px; }

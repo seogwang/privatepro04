@@ -10,4 +10,9 @@ public class HomeController {
     public String home() throws Exception{
         return "/index";
     }
+
+    @RequestMapping("contact")
+    public String contact() throws Exception{
+        return "/contact/map";
+    }
 }

@@ -108,6 +108,12 @@ public class UserController {
         }
     }
 
+    @GetMapping("logout.do")
+    public String memberLogout(HttpSession session) throws Exception {
+        session.invalidate();
+        return "redirect:/";
+    }
+
 //    @RequestMapping(value = "loginCheck.do", method = RequestMethod.POST)
 //    public String userAjaxLogin(User mdto, RedirectAttributes rttr) throws Exception {
 //        session.getAttribute("user");

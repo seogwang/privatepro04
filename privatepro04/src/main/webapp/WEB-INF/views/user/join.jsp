@@ -25,7 +25,7 @@
     input { width:400px; float:left; margin-bottom: 0px; }
 
     #content { width: 100%; height: 100%; overflow: hidden; margin: 0px; padding: 0px;}
-    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: left; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
+    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
     .container { width: 450px; margin: 10px auto; padding: 24px; height:auto; overflow-y:auto; }
     #frm1 { width : 400px; margin: 0px auto; }
     table tbody td { padding: 0px; }
