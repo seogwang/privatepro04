@@ -26,9 +26,16 @@
     });
   </script>
   <style>
-    .title { padding-top:36px; padding-bottom:20px; }
-    .agree_fr { width: 900px; white-space:pre-wrap; margin: 10px auto;
-      padding: 24px; border:2px solid #eee; height:600px; overflow-y:auto; }
+    input[type=checkbox] { transform : scale(2); }
+
+    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: left; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
+    .agree_fr { width: 450px; white-space:pre-wrap; margin: 10px auto;
+      padding: 24px; height:300px; overflow-y:auto; }
+    .form-check { width: 450px; margin: 10px auto; padding-left: 24px; padding-top: 10px; }
+    .form-check .form-check-label strong { font-size: 1.2em; }
+    .form-check .form-check-label { font-size: 1em; }
+    .btn-group { width: 450px; margin: 10px auto; }
+    .sgbtn { width: 400px; height: 45px; background-color: #7f8c8d; color: white; border-radius: 5px; margin: 0px auto; padding-left: 24px; }
   </style>
 </head>
 <body>
@@ -36,9 +43,16 @@
 
 </header>
 <div class="content container" id="content">
-  <h2 class="title">회원 약관 동의</h2>
+  <h2 class="title">스마트 해법</h2>
+
+  <div class="form-check">
+    <input type="checkbox" id="allagr" name="allagr" class="form-check-input" onclick="protocol()">
+    <label for="allagr" onclick="protocol()" class="form-check-label" style="padding: 0;"><strong>전체 약관에 동의</strong></label>
+  </div>
+
   <article class="agree_fr">
-    <h2>제1장 총칙</h2>
+    <strong>[약관]</strong>
+    제1장 총칙
 
     제1조(목적) 이 약관은 회사가 온라인으로 제공하는 디지털콘텐츠(이하 "콘텐츠"라고 한다) 및 제반서비스의 이용과 관련하여 회사와 이용자와의 권리, 의무 및 책임사항 등을 규정함을 목적으로 합니다.
     제2조(정의) 이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
@@ -339,6 +353,7 @@
     <label for="ck_item1" class="form-check-label">약관에 동의</label><br><br>
   </div>
   <article class="agree_fr">
+    <strong>[개인정보처리방침]</strong>
     제1장 총칙
 
     제1조(목적) 이 지침은 「개인정보 보호법」(이하 "법"이라 한다) 제12조제1항에 따른 개인정보의 처리에 관한 기준, 개인정보 침해의 유형 및 예방조치 등에 관한 세부적인 사항을 규정함을 목적으로 한다.
@@ -923,20 +938,15 @@
   <div class="form-check">
     <input type="checkbox" id="ck_item2" name="ck_item2" class="form-check-input">
     <label for="ck_item2" class="form-check-label">개인정보처리방침에 동의</label><br><br>
-  </div><br><hr><br>
-  <div class="form-check">
-    <input type="checkbox" id="allagr" name="allagr" class="form-check-input" onclick="protocol()">
-    <label for="allagr" onclick="protocol()" class="form-check-label"><strong>전체 약관에 동의</strong></label>
   </div>
-  <br><hr><br>
   <div class="btn-group">
-    <button type="button" id="in_btn1" class="button is-info">다음 단계</button>
+    <button type="button" id="sgbtn" class="sgbtn" style="border-radius: 5px;">다음 단계</button>
   </div>
   <script>
     var ck_item1 = document.getElementById("ck_item1");
     var ck_item2 = document.getElementById("ck_item2");
-    var in_btn1 = document.getElementById("in_btn1");
-    in_btn1.addEventListener("click", function(){
+    var sgbtn = document.getElementById("sgbtn");
+    sgbtn.addEventListener("click", function(){
       if(ck_item1.checked && ck_item2.checked){
         location.href = "${path1}/user/join";
       } else {
@@ -953,6 +963,19 @@
           ck_item2.checked = false;
         }
     }
+    $(".form-check").click(function () {
+        if(ck_item1.checked && ck_item2.checked){
+          $("#sgbtn").css("background-color","#0078e7");
+        } else {
+          $("#sgbtn").css("background-color","#7f8c8d");
+        }
+      });
+    $("#sgbtn").mouseover(function (){
+      $(this).css("opacity", "0.8");
+    });
+    $("#sgbtn").mouseout(function () {
+      $(this).css("opacity", "1");
+    });
   </script>
 </div>
 <footer id="footer" class="footer-nav row expanded collapse">

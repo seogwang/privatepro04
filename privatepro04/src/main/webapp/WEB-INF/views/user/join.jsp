@@ -20,25 +20,34 @@
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
+  <style>
+    td { height: 40px; margin: 0px;}
+    input { width:400px; float:left; margin-bottom: 0px; }
+
+    #content { width: 100%; height: 100%; overflow: hidden; margin: 0px; padding: 0px;}
+    .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: left; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
+    .container { width: 450px; margin: 10px auto; padding: 24px; height:auto; overflow-y:auto; }
+    #frm1 { width : 400px; margin: 0px auto; }
+    table tbody td { padding: 0px; }
+
+    input[type="date"]:not(.has-value):before{ color: #cacaca; content: attr(placeholder); }
+  </style>
 </head>
 <body>
 <header id="header">
 
 </header>
+<div class="content container" id="content">
+  <h2 class="title">스마트 해법</h2>
 
-<div class="content" id="con">
-  <div class="row column text-center">
-    <h2 class="h1">회원가입</h2>
-    <hr>
     <div class="container">
       <form name="frm1" id="frm1" action="${path1 }/user/insert" method="post" onsubmit="return joinCheck(this)">
         <table id="table1">
           <tbody>
           <tr>
-            <th style="background-color:#dcdcdc">아이디</th>
             <td>
-              <input type="text" name="id" id="id" placeholder="아이디 입력" pattern="^[a-z0-9]{5,12}" maxlength="12" required style="width:700px; float:left;">
-              <input type="button" id="idCkBtn" class="button" value="아이디 중복 체크" onclick="idCheck()">
+              <input type="text" name="id" id="id" placeholder="아이디" pattern="^[a-z0-9]{5,12}" maxlength="12" required>
+              <input type="button" id="idCkBtn" class="button" value="아이디 중복 체크" onclick="idCheck()" style="border-radius: 5px;">
               <input type="hidden" name="idck" id="idck" value="no"/>
               <c:if test="${empty qid }">
                 <p id="msg" style="padding-left:0.5rem">아직 아이디 중복 체크를 하지 않으셨습니다.</p>
@@ -46,60 +55,55 @@
               <c:if test="${not empty qid }">
                 <p id="msg" style="padding-left:0.5rem">아이디 중복 체크후 수정하였습니다.</p>
               </c:if>
+              <p id="msg" style="padding-left:0.5rem; font-size: 0.8em;">*아이디:영소문자,숫자 조합 5~12글자<br>*비밀번호:영대/소문자, 특수문자, 숫자 조합 8~12글자</p>
             </td>
           </tr>
           <tr>
-            <th style="background-color:#dcdcdc">비밀번호</th>
             <td>
-              <input type="password" name="pw" id="pw" placeholder="비밀번호 입력" maxlength="12" required>
+              <input type="password" name="pw" id="pw" placeholder="비밀번호" maxlength="12" required>
               <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
             </td>
           </tr>
           <tr>
-            <th style="background-color:#dcdcdc">비밀번호 확인</th>
             <td>
-              <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인 입력" maxlength="12" required>
+              <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인" maxlength="12" required>
               <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
             </td>
           </tr>
           <tr>
-            <th style="background-color:#dcdcdc">이름</th>
             <td>
-              <input type="text" name="name" id="name" placeholder="이름 입력" maxlength="40" required>
+              <input type="text" name="name" id="name" placeholder="이름" maxlength="40" required>
             </td>
           </tr>
           <tr>
-            <th style="background-color:#dcdcdc">생년월일</th>
             <td>
-              <input type="date" name="birth" id="birth" placeholder="생년월일 입력" required>
+              <!-- <input type="date" name="birth" id="birth" data-placeholder="생년월일" required> -->
+              <input type="date" name="birth" id="birth" placeholder="생년월일 : " required onchange="this.className=(this.value!=''?'has-value':'')">
             </td>
           </tr>
           <tr>
-            <th style="background-color:#dcdcdc">이메일</th>
             <td>
-              <input type="email" name="email" id="email" placeholder="이메일 입력" pattern="^\w+((\.\w+)?)+@\w+.?\w+\.\w+$" maxlength="80" required>
+              <input type="email" name="email" id="email" placeholder="이메일" pattern="^\w+((\.\w+)?)+@\w+.?\w+\.\w+$" maxlength="80" required>
             </td>
           </tr>
           <tr>
-            <th style="background-color:#dcdcdc">전화번호</th>
             <td>
-              <input type="tel" name="tel" id="tel" placeholder="전화번호 입력" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="19" required>
+              <input type="tel" name="tel" id="tel" placeholder="전화번호" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="19" required>
             </td>
           </tr>
           <tr>
-            <th style="background-color:#dcdcdc">주소</th>
             <td>
-              <input type="text" name="addr1" id="addr1" placeholder="기본주소 입력" maxlength="150" required><br><br>
-              <input type="text" name="addr2" id="addr2" placeholder="상세주소 입력" maxlength="90" required><br><br>
-              <input type="text" name="postcode" id="postcode" placeholder="우편번호 입력" maxlength="9" required>
-              <input type="button" id="isAddrBtn" class="button" value="주소 입력" onclick="findAddr()">
+              <input type="text" name="postcode" id="postcode" placeholder="우편번호" maxlength="9" required style="width: 200px;">
+              <input type="button" id="isAddrBtn" class="button" value="주소 찾기" onclick="findAddr()" style="width: 200px; border-radius: 5px;">
+              <input type="text" name="addr1" id="addr1" placeholder="기본주소" maxlength="150" required><br><br>
+              <input type="text" name="addr2" id="addr2" placeholder="상세주소" maxlength="90" required><br><br>
               <input type="hidden" name="addrck" id="addrck" value="no"/>
             </td>
           </tr>
           <tr>
             <td colspan="2">
-              <input type="submit" class="submit success button" value="회원 가입" >
-              <input type="reset" class="reset button" value="취소" >
+              <input type="submit" class="submit success button" value="회원 가입" style="background-color: #00A2FF; color: white; border-radius: 5px;" >
+              <input type="reset" class="reset button" value="다시 작성" style="background-color: #565d64; border-radius: 5px;">
             </td>
           </tr>
           </tbody>
@@ -175,10 +179,10 @@
             }
           }).open();
         }
+        $("")
       </script>
       <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     </div>
-  </div>
 </div>
 <footer id="footer" class="footer-nav row expanded collapse">
 
