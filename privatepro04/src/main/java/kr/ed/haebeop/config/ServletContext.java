@@ -26,23 +26,23 @@ public class ServletContext implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-        registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/resources/css");
         registry.addResourceHandler("/admin/**").addResourceLocations("/WEB-INF/views/admin");
         registry.addResourceHandler("/ajax/**").addResourceLocations("/WEB-INF/views/ajax");
         registry.addResourceHandler("/api/**").addResourceLocations("/WEB-INF/views/api");
         registry.addResourceHandler("/board/**").addResourceLocations("/WEB-INF/views/board");
         registry.addResourceHandler("/calendar/**").addResourceLocations("/WEB-INF/views/calendar");
-        registry.addResourceHandler("/chat/**").addResourceLocations("/WEB-INF/views/chat");
         registry.addResourceHandler("/check/**").addResourceLocations("/WEB-INF/views/check");
         registry.addResourceHandler("/fileupload/**").addResourceLocations("/WEB-INF/views/fileupload");
         registry.addResourceHandler("/free/**").addResourceLocations("/WEB-INF/views/free");
         registry.addResourceHandler("/guestbook/**").addResourceLocations("/WEB-INF/views/guestbook");
         registry.addResourceHandler("/lec/**").addResourceLocations("/WEB-INF/views/lec");
-        registry.addResourceHandler("/member**").addResourceLocations("/WEB-INF/views/member");
+        registry.addResourceHandler("/user/**").addResourceLocations("/WEB-INF/views/user");
         registry.addResourceHandler("/notice/**").addResourceLocations("/WEB-INF/views/notice");
         registry.addResourceHandler("/qna/**").addResourceLocations("/WEB-INF/views/qna");
         registry.addResourceHandler("/reserv/**").addResourceLocations("/WEB-INF/views/reserv");
         registry.addResourceHandler("/test/**").addResourceLocations("/WEB-INF/views/test");
         registry.addResourceHandler("/util/**").addResourceLocations("/WEB-INF/views/util");
+        registry.addResourceHandler("/contact/**").addResourceLocations("/WEB-INF/views/contact");
+
     }
 }

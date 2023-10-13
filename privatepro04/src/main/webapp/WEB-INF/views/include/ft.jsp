@@ -8,6 +8,7 @@
 <c:set var="path1" value="${pageContext.servletContext.contextPath }" />
 
 <div class="footer l-box is-center">
+    <img src="">
     View the source of this layout to learn more. Made with love by the Pure Team.
 </div>
 

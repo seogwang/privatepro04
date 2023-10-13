@@ -15,4 +15,9 @@ public class HomeController {
     public String contact() throws Exception{
         return "/contact/map";
     }
+
+    @RequestMapping("bgimgTest")
+    public String bgimgTest() throws Exception{
+        return "/test/bgimgTest";
+    }
 }

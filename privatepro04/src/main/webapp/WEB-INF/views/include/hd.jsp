@@ -8,7 +8,7 @@
 <c:set var="path1" value="${pageContext.servletContext.contextPath }" />
 <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-        <a class="pure-menu-heading" href="">스마트 해법</a>
+        <a class="pure-menu-heading" href="${path1 }">스마트 해법</a>
 
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">공지사항</a></li>

@@ -82,22 +82,6 @@ public class UserController {
         return "user/loginForm";
     }
 
-    @RequestMapping(value="signin", method = RequestMethod.POST)
-    public String userSignin(@RequestParam String id, @RequestParam String pw, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-        session.invalidate();
-        User mdto = new User();
-        mdto.setPw(pw);
-        mdto.setId(id);
-        User login = userService.signIn(mdto);
-        boolean loginSuccess = passwordEncoder.matches(mdto.getPw(), login.getPw());
-        if (loginSuccess && login != null) {
-            session.setAttribute("user", login);
-            session.setAttribute("sid", id);
-            return "redirect:/";
-        } else {
-            return "redirect:loginForm";
-        }
-    }
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String userLogin(User mdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
         boolean loginSuccess = userService.logIn(req);
@@ -114,13 +98,11 @@ public class UserController {
         return "redirect:/";
     }
 
-//    @RequestMapping(value = "loginCheck.do", method = RequestMethod.POST)
-//    public String userAjaxLogin(User mdto, RedirectAttributes rttr) throws Exception {
-//        session.getAttribute("user");
-//        User user = userService.loginCheck(mdto);
-//        boolean mat = passwordEncoder.matches(mdto.getPw(), user.getPw());
-//        if(mat==true && user!=null) {
-//
-//        }
-//    }
+    @GetMapping("delete")
+    public void userDelete(HttpServletRequest req, HttpServletResponse res, Model model) throws Exception{
+        String id = (String) session.getAttribute("sid");
+        if(id!="admin") {
+            userService.userDelete(id);
+        }
+    }
 }

@@ -26,6 +26,8 @@
     font-size: 13px;
   }
 
+  .footer { color: white; }
+
   h1,
   h2,
   h3,
