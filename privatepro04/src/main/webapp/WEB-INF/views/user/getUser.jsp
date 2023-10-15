@@ -45,7 +45,7 @@
         <c:if test="${sid!='admin' }">
             <h2 class="title">마이 페이지</h2>
         </c:if>
-        <form name="frm1" id="frm1" action="${path1 }/member/update.do" method="post" onsubmit="return updateCheck(this)">
+        <form name="frm1" id="frm1" action="${path1 }/user/update.do" method="post" onsubmit="return updateCheck(this)">
             <div class="table_form_wrap">
                 <table class="table_form">
                     <tbody>

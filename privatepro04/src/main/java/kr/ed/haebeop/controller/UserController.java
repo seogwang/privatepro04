@@ -98,6 +98,18 @@ public class UserController {
         return "redirect:/";
     }
 
+    @RequestMapping(value="update.do", method = RequestMethod.POST)
+    public String userUpdate(User user, Model model) throws Exception {
+        String pwd = "";
+        if(user.getPw().length()<=16) {
+            pwd = passwordEncoder.encode(user.getPw());
+            user.setPw(pwd);
+        }
+        userService.userUpdate(user);
+        return "redirect:/";
+    }
+
+
     @GetMapping("delete")
     public void userDelete(HttpServletRequest req, HttpServletResponse res, Model model) throws Exception{
         String id = (String) session.getAttribute("sid");
