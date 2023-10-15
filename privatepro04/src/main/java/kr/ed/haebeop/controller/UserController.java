@@ -40,12 +40,12 @@ public class UserController {
         return  "/user/getUser";
     }
 
-    @GetMapping("agree")
+    @RequestMapping(value = "agree", method = RequestMethod.GET)
     public String getAgree(Model model) throws Exception {
         return "/user/agree";
     }
 
-    @GetMapping("join")
+    @RequestMapping(value = "join", method = RequestMethod.GET)
     public String userJoin(Model model) throws Exception {
         return "user/join";
     }
@@ -77,7 +77,7 @@ public class UserController {
         return "user/loginForm";
     }
 
-    @RequestMapping("loginForm")
+    @RequestMapping(value = "loginForm", method = RequestMethod.GET)
     public String loginForm(Model model) throws Exception {
         return "user/loginForm";
     }
@@ -92,7 +92,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("logout.do")
+    @RequestMapping(value = "logout.do", method = RequestMethod.GET)
     public String memberLogout(HttpSession session) throws Exception {
         session.invalidate();
         return "redirect:/";
@@ -109,12 +109,10 @@ public class UserController {
         return "redirect:/";
     }
 
-
-    @GetMapping("delete")
-    public void userDelete(HttpServletRequest req, HttpServletResponse res, Model model) throws Exception{
-        String id = (String) session.getAttribute("sid");
-        if(id!="admin") {
+    @RequestMapping(value="delete.do", method = RequestMethod.GET)
+    public String userDelete(@RequestParam String id, Model model, HttpSession session) throws Exception {
             userService.userDelete(id);
-        }
+            session.invalidate();
+            return "redirect:/";
     }
 }

@@ -55,7 +55,9 @@ public class UserServiceImpl implements UserService {
 
         User login = userMapper.logIn(mdto);
 
-        loginSuccess = passwordEncoder.matches(mdto.getPw(), login.getPw());
+        if(login != null) {
+            loginSuccess = passwordEncoder.matches(mdto.getPw(), login.getPw());
+        }
         if(login != null && loginSuccess==true) {
             session.setAttribute("user", login);
             session.setAttribute("sid", login.getId());

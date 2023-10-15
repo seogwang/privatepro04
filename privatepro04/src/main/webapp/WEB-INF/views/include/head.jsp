@@ -237,7 +237,6 @@
   /* This is the class used for the footer */
   .footer {
     background: #111;
-    position: fixed;
     bottom: 0;
     width: 100%;
   }

@@ -22,8 +22,10 @@
             <li class="pure-menu-item"><a href="${path1 }/user/loginForm" class="pure-menu-link">로그인</a></li>
             <li class="pure-menu-item"><a href="${path1 }/user/agree" class="pure-menu-link">회원가입</a></li>
             </c:if>
-            <c:if test="${!empty sid}">
+            <c:if test="${!empty sid && !sid.equals('admin')}">
                 <li class="pure-menu-item"><a href="${path1 }/user/getUser" class="pure-menu-link">마이페이지</a></li>
+            </c:if>
+            <c:if test="${!empty sid}">
                 <li class="pure-menu-item"><a href="${path1 }/user/logout.do" class="pure-menu-link">로그아웃</a></li>
             </c:if>
             <li class="pure-menu-item"><a href="${path1 }/contact" class="pure-menu-link">오시는 길</a></li>

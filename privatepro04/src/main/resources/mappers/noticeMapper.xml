@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ed.haebeop.persistence.noticeMapper">
+    <select id="noticeList" resultType="kr.ed.haebeop.domain.notice">
+        select * from notice
+    </select>
+    <select id="noticeCount" resultType="integer">
+        select count(*) from notice
+    </select>
+    <select id="getNotice" resultType="kr.ed.haebeop.domain.Notice">
+        select * from notice where no=#{no }
+    </select>
+    <insert id="noticeInsert">
+        insert into notice values(default, #{title }, #{content }, default, default)
+    </insert>
+    <update id="noticeUpdate">
+        update notice set title=#{title }, content=#{content }
+    </update>
+    <delete id="noticeDelete">
+        delete from notice where no=#{no }
+    </delete>
+    <update id="noticeVisit">
+        update from notice set visit=visit+1 where no=#{no }
+    </update>
+</mapper>

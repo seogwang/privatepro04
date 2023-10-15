@@ -45,57 +45,70 @@
         <c:if test="${sid!='admin' }">
             <h2 class="title">마이 페이지</h2>
         </c:if>
+
         <form name="frm1" id="frm1" action="${path1 }/user/update.do" method="post" onsubmit="return updateCheck(this)">
-            <div class="table_form_wrap">
-                <table class="table_form">
-                    <tbody>
-                    <tr>
-                        <td><input type="text" name="id" id="id" size="100" class="single100" value="${user.id }" readonly required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" name="pw" id="pw"  class="single100" value="${user.pw }" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                            <p>(최소 8자리에서 최대 16자리까지, 숫자, 영문 대소문자, 특수문자가 각 1 문자 이상 포함되어야 함)</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" name="pw2" id="pw2"  class="single100" value="${user.pw }" required></td>
-                    </tr>
-                        <td><input type="text" name="name" id="name" class="single100"  value="${user.name }" required></td>
-                    </tr>
-                    <tr>
-                        <td><input type="email" name="email" id="email" class="single100" value="${user.email }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required></td>
-                    </tr>
-                    <tr>
-                        <td><input type="tel" name="tel" id="tel" class="single100"  value="${user.tel }" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" name="postcode" id="postcode"  class="single40" value="${user.postcode }" required style="width: 200px;">
-                            <input type="button" id="isAddrBtn" class="button" value="주소찾기" onclick="findAddr()" style="border-radius: 5px; width:200px;">
-                            <input type="text" name="addr1" id="addr1" class="single100" value="${user.addr1 }"><br>
-                            <input type="text" name="addr2" id="addr2" class="single100" value="${user.addr2 }"><br>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <fmt:parseDate value="${user.birth }" var="birth" pattern="yyyy-MM-dd" />
-                            <span style="display:none"><fmt:formatDate var="br" value="${birth }" pattern="yyyy-MM-dd" /></span>
-                            <input type="date" name="birth" id="birth" value="${br }" class="single100">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input type="submit" class="button btn-writer" style="border-radius: 5px; width:120px;" value="회원정보수정">
-                            <input type="reset" class="button btn-primary" style="border-radius: 5px; width:120px;" value="취소">
-                            <c:if test="${sid!='admin' }">
-                                <a href="${path1 }/user/delete?id=${sid }" class="button btn-danger" style="border-radius: 5px; width:120px;">회원 탈퇴</a>
-                            </c:if>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table id="table1">
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="text" name="id" id="id" value="${user.id }" readonly required>
+                        <p id="msg" style="padding-left:0.5rem; font-size: 0.8em;">*비밀번호:영대/소문자, 특수문자, 숫자 조합 8~12글자</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" name="pw" id="pw" value="${user.pw }" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                        <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" name="pw2" id="pw2" value="${user.pw }" required>
+                        <!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="name" id="name" value="${user.name }" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- <input type="date" name="birth" id="birth" data-placeholder="생년월일" required> -->
+                        <fmt:parseDate value="${user.birth }" var="birth" pattern="yyyy-MM-dd" />
+                        <span style="display:none"><fmt:formatDate var="br" value="${birth }" pattern="yyyy-MM-dd" /></span>
+                        <input type="date" name="birth" id="birth" value="${br }">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="email" name="email" id="email" value="${user.email }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="tel" name="tel" id="tel" value="${user.tel }" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="postcode" id="postcode"  value="${user.postcode }" required style="width: 200px;">
+                        <input type="button" id="isAddrBtn" class="button" value="주소찾기" onclick="findAddr()" style="border-radius: 5px; width:188px;">
+                        <input type="text" name="addr1" id="addr1" value="${user.addr1 }" maxlength="150" required><br>
+                        <input type="text" name="addr2" id="addr2" value="${user.addr2 }" maxlength="90" required><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="submit success button" value="회원 정보 수정" style="background-color: #00A2FF; color: white; border-radius: 5px;" >
+                        <input type="reset" class="reset button" value="다시 작성" style="background-color: #565d64; border-radius: 5px;">
+                        <c:if test="${sid!='admin' }">
+                            <a href="${path1 }/user/delete?id=${sid }" class="button btn-danger" style="border-radius: 5px; width:120px;">회원 탈퇴</a>
+                        </c:if>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </form>
         <script>
             function updateCheck(f){

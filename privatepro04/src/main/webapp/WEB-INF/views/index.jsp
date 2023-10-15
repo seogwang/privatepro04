@@ -38,18 +38,18 @@
         .btn_box li.banner2 bn_btn { left: 132px; }
         --%>
         html,
-        body { position: relative; height: 93%; }
+        body { position: relative; height: 100%; }
 
-        body { background: #eee; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px;
+        body { background: #eee; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px;
             color: #000; margin: 0; padding: 0; }
 
-        .swiper { width: 100%; height: 93%; }
+        .swiper { width: 100%; height: 100%; }
 
         .swiper-slide { text-align: center; font-size: 18px; background: #fff;
             display: flex; justify-content: center; align-items: center; }
 
-        .swiper-slide img { display: block; width: 100%; height: 93%;
-            object-fit: cover; object-position: 0px -100px; }
+        .swiper-slide img { display: block; width: 100%; height: 100%;
+            object-fit: cover; object-position: 0px -80px; }
 
         .slide_wrap img { position: absolute; top:0px; left: 0px; z-index: 1; }
         .slide_wrap h2 { position: absolute; top:20%; left: 10%; z-index: 2; font-size: 3em; line-height: 1.5em }
