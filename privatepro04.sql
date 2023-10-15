@@ -1,5 +1,28 @@
 USE haebeop;
 
+CREATE DATABASE haebeop;
+
+CREATE TABLE user (
+id VARCHAR(200) PRIMARY KEY,
+pw VARCHAR(300) NOT NULL,
+name VARCHAR(100) NOT NULL,
+email VARCHAR(100) NOT NULL,
+tel VARCHAR(100) NOT NULL,
+addr1 VARCHAR(100) NOT NULL,
+addr2 VARCHAR(100) NOT NULL,
+postcode VARCHAR(100) NOT NULL,
+regdate timestamp NOT NULL default CURRENT_TIMESTAMP,
+birth VARCHAR(100) NOT NULL,
+pt INT DEFAULT 0,
+visited INT DEFAULT 0
+);
+
+INSERT INTO user VALUES('admin', '$2a$10$B1eSQwtXQMZIht3sHOWS7.a/wOmnXT9T3EqYwl7qBbOfAuj8YuKvW', '관리자', 'admin@haebeop.com','010-1234-1234', '서울', '구로동', '12345', DEFAULT, '1900-01-01', DEFAULT, DEFAULT );
+
+DROP TABLE user;
+
+select * FROM user;
+
 CREATE table notice (
 no INT AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(200) NOT NULL,
