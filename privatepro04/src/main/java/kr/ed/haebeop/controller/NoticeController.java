@@ -55,7 +55,7 @@ public class NoticeController {
         return "redirect:list.do";
     }
 
-    @RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
+    @RequestMapping(value = "update.do", method = RequestMethod.GET)
     public String updateForm(Model model) throws Exception {
         return "/notice/updateForm";
     }

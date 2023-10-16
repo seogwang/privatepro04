@@ -11,7 +11,7 @@
         <a class="pure-menu-heading" href="${path1 }">스마트 해법</a>
 
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">공지사항</a></li>
+            <li class="pure-menu-item"><a href="${path1 }/notice/list.do" class="pure-menu-link">공지사항</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">자료실</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">자유게시판</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">수강신청</a></li>
