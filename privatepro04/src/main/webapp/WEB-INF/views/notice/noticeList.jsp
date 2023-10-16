@@ -42,19 +42,24 @@
     <div class = content_wrap>
         <h2 class="title">공지사항</h2>
         <div class="container">
+            <c:if test='${sid eq "admin"}'>
+                <div class="button-group">
+                    <a class="button" href="${path1 }/notice/insert.do">공지사항 등록</a>
+                </div>
+            </c:if>
             <table>
                 <thead>
                 <tr>
                     <th style="width:10%; text-align: center; ">글번호</th>
                     <th style="width:60%; ">제목</th>
-                    <th style="width:20%; ">작성일</th>
+                    <th style="width:10%; ">작성일</th>
                     <th style="width:10%; text-align: center; ">조회수</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${noticeList }" var="notice" varStatus="status">
                     <tr>
-                        <td style="text-align: center; ">${status.count }</td>
+                        <td style="text-align: center; ">${notice.no }</td>
                         <td><a href="${path1}/notice/getNotice?no=${notice.no }">${notice.title }</a></td>
                         <td>
                             <fmt:parseDate value="${notice.regdate }" var="resdate" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -65,18 +70,6 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <script>
-                $(document).ready( function () {
-                    $('#myTable').DataTable({
-                        order:[[0, "desc"]]
-                    });
-                });
-            </script>
-            <%-- <c:if test='${sid eq "admin"}'>  --%>
-            <div class="button-group">
-                <a class="button" href="${path1 }/notice/insert.do">글쓰기</a>
-            </div>
-            <%-- </c:if> --%>
         </div>
     </div>
 </div>

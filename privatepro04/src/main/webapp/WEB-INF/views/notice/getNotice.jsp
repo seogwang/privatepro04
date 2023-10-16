@@ -55,7 +55,7 @@
         </table>
         <div class="button-group">
             <a class="button" href="${path1 }/notice/list.do">글 목록</a>
-            <a class="button" href="${path1 }/notice/delete.do?no=${dto.no }">글 삭제</a>
+            <a class="button" href="${path1 }/notice/noticeDelete?no=${dto.no }">글 삭제</a>
             <a class="button" href="${path1 }/notice/update.do?no=${dto.no }">글 수정</a>
         </div>
     </div>

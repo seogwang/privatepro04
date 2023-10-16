@@ -56,8 +56,11 @@ public class NoticeController {
     }
 
     @RequestMapping(value = "update.do", method = RequestMethod.GET)
-    public String updateForm(Model model) throws Exception {
-        return "/notice/updateForm";
+    public String updateForm(HttpServletRequest request, Model model) throws Exception {
+        int no = Integer.parseInt(request.getParameter("no"));
+        Notice dto = noticeService.getNotice(no);
+        model.addAttribute("dto", dto);
+        return "/notice/noticeUpdate";
     }
 
     @RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
@@ -97,7 +100,7 @@ public class NoticeController {
             byte[] bytes = upload.getBytes();
 
             //이미지 경로 생성
-            String path = "D:\\kim\\spring1\\pro31\\src\\main\\webapp\\resources\\upload" + "ckImage/";	// 이미지 경로 설정(폴더 자동 생성)
+            String path = "D:\\sg\\privatepro04\\privatepro04\\src\\main\\webapp\\resources\\upload" + "ckImage/";	// 이미지 경로 설정(폴더 자동 생성)
             //String path = request.getRealPath("/resource/uploadckImage/");
             String ckUploadPath = path + uid + "_" + fileName;
             File folder = new File(path);
@@ -117,7 +120,7 @@ public class NoticeController {
 
             String callback = request.getParameter("CKEditorFuncNum");
             printWriter = response.getWriter();
-            String fileUrl = "/pro3_war/free/ckImgSubmit.do?uid=" + uid + "&fileName=" + fileName; // 작성화면
+            String fileUrl = "/privatepro04_war/notice/ckImgSubmit.do?uid=" + uid + "&fileName=" + fileName; // 작성화면
 
             // 업로드시 메시지 출력
             printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
@@ -142,7 +145,7 @@ public class NoticeController {
             throws ServletException, IOException{
 
         //서버에 저장된 이미지 경로
-        String path = "D:\\kim\\spring1\\pro31\\src\\main\\webapp\\resources\\upload" + "ckImage/";	// 저장된 이미지 경로
+        String path = "D:\\sg\\privatepro04\\privatepro04\\src\\main\\webapp\\resources\\upload" + "ckImage/";	// 저장된 이미지 경로
         //String path = request.getRealPath("/resource/uploadckImage/");
         System.out.println("path:"+path);
         String sDirPath = path + uid + "_" + fileName;

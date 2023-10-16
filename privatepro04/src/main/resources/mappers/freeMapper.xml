@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ed.haebeop.persistence.FreeMapper">
+    <select id="freeList" resultType="kr.ed.haebeop.domain.Free">
+        select * from free order by regdate desc
+    </select>
+    <select id="getFree" resultType="kr.ed.haebeop.domain.Free">
+        select * from free where fno=#{fno }
+    </select>
+    <select id="totCount" resultType="integer">
+        select count(*) from free
+    </select>
+
+</mapper>

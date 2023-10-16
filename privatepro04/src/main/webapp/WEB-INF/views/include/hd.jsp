@@ -13,10 +13,10 @@
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="${path1 }/notice/list.do" class="pure-menu-link">공지사항</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">자료실</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">자유게시판</a></li>
+            <li class="pure-menu-item"><a href="${path1 }/free/list.do" class="pure-menu-link">자유게시판</a></li>
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">수강신청</a></li>
             <c:if test="${sid.equals('admin')}">
-                <li class="pure-menu-item"><a href="${path1}/userList" class="pure-menu-link" style="color: red; font-weight: bold;" >관리자페이지</a></li>
+                <li class="pure-menu-item"><a href="${path1}/admin/" class="pure-menu-link" style="color: red; font-weight: bold;" >관리자페이지</a></li>
             </c:if>
             <c:if test="${empty sid}">
             <li class="pure-menu-item"><a href="${path1 }/user/loginForm" class="pure-menu-link">로그인</a></li>
