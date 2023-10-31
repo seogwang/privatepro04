@@ -11,7 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 목록</title>
-    <jsp:include page="../include/head.jsp" />
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
@@ -37,16 +36,16 @@
 <body>
 <jsp:include page="../include/hd.jsp" />
 
-<div class="content" id="content">
-    <h2 class="title">공지사항</h2>
-    <div class="container">
+<div class="content1" id="content1">
+    <h2 class="title1">공지사항</h2>
+    <div class="container1">
         <table>
             <tbody>
                 <tr>
                     <td>${dto.title }</td>
                 </tr>
                 <tr>
-                    <td>작성일 : ${dto.regdate } | 조회수 : ${dto.visit }</td>
+                    <td>작성일 : ${dto.resdate } | 조회수 : ${dto.visit }</td>
                 </tr>
                 <tr>
                     <td style="min-height: 50vh;">${dto.content }</td>

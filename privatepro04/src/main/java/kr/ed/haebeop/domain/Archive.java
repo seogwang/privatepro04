@@ -14,7 +14,7 @@ public class Archive {
     private String file1;
     private String file2;
     private String file3;
-    private String regdate;
+    private String resdate;
     private String author;
     private int visit;
 }

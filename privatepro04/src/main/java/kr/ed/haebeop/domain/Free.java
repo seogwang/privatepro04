@@ -11,7 +11,7 @@ public class Free {
     private int fno;
     private String title;
     private String content;
-    private String regdate;
+    private String resdate;
     private int visit;
     private String id;
 }

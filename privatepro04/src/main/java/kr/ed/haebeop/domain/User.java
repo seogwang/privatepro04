@@ -16,7 +16,7 @@ public class User {
     private String addr1;
     private String addr2;
     private String postcode;
-    private String regdate;
+    private String resdate;
     private String birth;
     private int pt;
     private int visited;
