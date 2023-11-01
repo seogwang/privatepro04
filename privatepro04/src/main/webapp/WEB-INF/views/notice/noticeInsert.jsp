@@ -38,7 +38,7 @@
 <jsp:include page="../include/hd.jsp" />
 
 <div class="content1" id="contents1">
-    <h2 class="title1">공지사항</h2>
+    <h2 class="title1">공지사항등록</h2>
     <div class="container1">
         <form action="${path1 }/notice/noticeInsert" method="post">
             <table>

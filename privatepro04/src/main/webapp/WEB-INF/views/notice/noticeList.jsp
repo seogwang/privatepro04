@@ -23,12 +23,6 @@
         td { height: 40px; margin: 0px;}
         input { width:400px; float:left; margin-bottom: 0px; }
 
-        #content { width: 100%; height: 100%; overflow: hidden; margin: 70px; padding: 0px;}
-        .content_wrap {with: 60%; height:100%; margin: 0px auto; }
-
-        .title { width: 450px; margin: 10px auto; font-size: 2em; font-weight: bold; text-align: center; color:#00A2FF; padding-top:36px; padding-bottom:20px; }
-        .container { width: 1000px; margin: 10px auto; padding: 24px; height:auto; overflow-y:auto; }
-        #frm1 { width : 400px; margin: 0px auto; }
         table tbody td { padding: 0px; }
 
         input[type="date"]:not(.has-value):before{ color: #cacaca; content: attr(placeholder); }
@@ -41,6 +35,24 @@
     <div class="content_wrap1">
         <h2 class="title1">공지사항</h2>
         <div class="container1">
+            <div class="button-group">
+                <form action="${path1 }/notice/list.do" method="get" class="field has-addons has-addons-right">
+                    <p class="control">
+                            <span class="select">
+                                <select id="type" name="type">
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                </select>
+                            </span>
+                    </p>
+                    <p class="control">
+                        <input class="input" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" value="${keyword }">
+                    </p>
+                    <p class="control">
+                        <input type="submit" class="button is-mainColor" value="검색" />
+                    </p>
+                </form>
+            </div>
             <c:if test='${sid eq "admin"}'>
                 <div class="button-group">
                     <a class="button" href="${path1 }/notice/insert.do">공지사항 등록</a>
@@ -70,6 +82,30 @@
                 </tbody>
             </table>
         </div>
+        <nav aria-label="pagination">
+            <ul class="pagination">
+                <c:if test="${curPage > page.pageCount }">
+                    <li class="pagination-previous"><a href="${path1 }/notice/list.do?page=${page.blockStartNum - 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="pagination-previous">Previous<span class="show-for-sr">page</span></a></li>
+                </c:if>
+                <c:forEach var="i" begin="${page.blockStartNum }" end="${page.blockLastNum }">
+                    <c:choose>
+                        <c:when test="${i == curPage }">
+                            <li>
+                                <a href="${path1 }/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" class="current" aria-label="Page ${i }" >${i }</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>
+                                <a href="${path1 }/notice/list.do?page=${i }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" aria-label="Page ${i }" >${i }</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:if test="${page.blockLastNum < page.totalPageCount }">
+                <li class="pagination-next"><a href="${path1 }/notice/list.do?page=${page.blockLastNum + 1 }<c:if test="${!empty keyword }">&type=${type }&keyword=${keyword }</c:if>" aria-label="Next page">Next <span class="show-for-sr">page</span></a>
+                </c:if>
+            </ul>
+        </nav>
     </div>
 </div>
 

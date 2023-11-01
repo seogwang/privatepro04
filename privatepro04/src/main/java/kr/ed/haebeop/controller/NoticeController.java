@@ -2,9 +2,11 @@ package kr.ed.haebeop.controller;
 
 import kr.ed.haebeop.domain.Notice;
 import kr.ed.haebeop.service.NoticeService;
+import kr.ed.haebeop.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,10 +28,29 @@ public class NoticeController {
     @Autowired
     private NoticeService noticeService;
 
-    @RequestMapping(value="list.do", method = RequestMethod.GET)
-    public String noticeList(Model model) throws Exception {
-        List<Notice> noticeList = noticeService.noticeList();
+    @GetMapping("list.do") //notice/list.do
+    public String getNoticeList(HttpServletRequest request, Model model) throws Exception {
+        String type = request.getParameter("type");
+        String keyword = request.getParameter("keyword");
+        int curPage = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 1;
+
+        Page page = new Page();
+        page.setSearchType(type);
+        page.setSearchKeyword(keyword);
+        int total = noticeService.noticeCount(page);
+
+        page.makeBlock(curPage, total);
+        page.makeLastPageNum(total);
+        page.makePostStart(curPage, total);
+
+        model.addAttribute("type", type);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("page", page);
+        model.addAttribute("curPage", curPage);
+
+        List<Notice> noticeList = noticeService.noticeList(page);
         model.addAttribute("noticeList", noticeList);
+
         return "/notice/noticeList";
     }
 
